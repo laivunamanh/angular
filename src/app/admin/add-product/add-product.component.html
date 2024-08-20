@@ -1,0 +1,37 @@
+<h1 class="my-12 font-bold text-3xl ">Thêm mới sinh viên</h1>
+<form [formGroup]="producform" (ngSubmit)="onSubmit()" class="max-w-sm mx-auto" class="form">
+    <div class="flex flex-col gap-2">
+      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tên sản phẩm</label>
+      <input id="name" class="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Tên sản phẩm" formControlName="name"/>
+      <p *ngIf="!producform.controls.name.valid && (producform.controls.name.dirty || producform.controls.name.touched)" class="text-red-500 text-sm">Tên không được để trống</p>
+    </div>
+  
+    <div class="flex flex-col gap-2">
+      <label for="image" class="text-lg font-medium text-gray-700">Ảnh sản phẩm</label>
+      <input id="image" class="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Ảnh sản phẩm" formControlName="image"/>
+    </div>
+  
+    <div class="flex flex-col gap-2">
+      <label for="category" class="text-lg font-medium text-gray-700">Chọn danh mục</label>
+      <select id="category" class="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" formControlName="category">
+        @for(menu of menus; track menu;){
+        <option value="1">{{menu.name}}</option>}
+      </select>
+    </div>
+
+    <div class="flex flex-col gap-2">
+        <label for="desc" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">MoTa sản phẩm</label>
+        <input id="desc" class="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="mota sản phẩm" formControlName="desc"/>
+        <p *ngIf="!producform.controls.desc.valid && (producform.controls.desc.dirty || producform.controls.desc.touched)" class="text-red-500 text-sm">Tên không được để trống</p>
+      </div>
+
+
+  
+    <div class="flex flex-col gap-2">
+      <label for="price" class="text-lg font-medium text-gray-700">Giá sản phẩm</label>
+      <input id="price" class="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" type="number" formControlName="price"/>
+    </div>
+  
+    <button class="p-3 bg-blue-600 text-black rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50" type="submit" [disabled]="!producform.valid">Thêm mới sản phẩm</button>
+  </form>
+  
